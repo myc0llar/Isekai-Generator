@@ -7,10 +7,56 @@
         <meta name="author" content="myc0llar">
         <meta name="keywords" content="Isekai, Generator">
         <title>Isekai Generator</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
         <link rel="stylesheet" href="styles.css" type="text/css" media="all">
     </head> 
     <body>
-        <h1>Hello World</h1>
+        <section class="section">
+            <div class="container">
+              <h1 class="title is-1">
+                Isekai Generator
+              </h1>
+              <p class="subtitle">
+                <!-- I'll figure out something witty to say -->
+              </p>
+              <hr>
+              <div class="container is-fullhd">
+                <h2 class="title is-3">Options</h2>
+                <h3 class="title is-4">Fandoms</h3>
+                <details>
+                    <summary>Select fandoms</summary>
+                    <div id="fandoms" class="is-flex is-flex-wrap-wrap"></div>
+                </details>
+                <br>
+                <h3 class="title is-4">Chosen Gender(s)</h3>
+                <div class="class="is-flex is-flex-wrap-wrap">
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <label for="male"><input type="checkbox" id="male"> Male</label>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <label for="female"><input type="checkbox" id="female"> Female</label>
+                        </div>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <div class="box">
+                            <label for="gnc"><input type="checkbox" id="gnc"> Gender-Nonconforming</label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <hr>
+              <p>Ready to try? Press the button: <br><button class="button is-primary" id="start" onclick="makeScenario()">Let's go!</button></p>
+            </div>
+          </section>
+          <section class="section" id="fandomsection">
+            <h2 class="title is-2">Fandom: <span id="chosenFandom"></span></h2>
+            <p><span id="charcount">0</span> Available Characters. <span id="charRoster"></span></p>
+          </section>
         <script src="script.js" type="text/javascript"></script>
+        <script src="isekai.js" type="text/javascript"></script>
+        <script src="characters.js" type="text/javascript"></script>
     </body>
 </html>

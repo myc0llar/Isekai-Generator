@@ -1,0 +1,7 @@
+#fandomsection{
+    display:none;
+}
+
+.box{
+    box-shadow: none; /* Looks ugly, bulma */
+}

@@ -37,4 +37,18 @@ function listify(arr){
         return `${arr.join(", ")} and ${lastItem}`;
     }
 }
+
+/**
+ * Replace multiple values in a string at once.
+ * @param {String} str The string
+ * @param {Object} obj All values to be replaced and what to replace them with.
+ * @returns {String} New value
+ * allReplace( 'abcd-abcd', { 'a': 'h', 'b': 'o' } ) -> 'hocd-hocd'
+ */
+function allReplace(str, obj) {
+    for (const x in obj) {
+      str = str.replace(new RegExp(x, 'g'), obj[x]);
+    }
+    return str;
+  };
 console.log('Arithmatic and DOM functions loaded!');

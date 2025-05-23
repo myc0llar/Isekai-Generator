@@ -1,7 +1,17 @@
 #fandomsection{
     display:none;
+    width: 60vw;
+    margin: auto;
 }
 
-.box{
-    box-shadow: none; /* Looks ugly, bulma */
+#spiral{
+    animation: 16s linear infinite spin;
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(365deg);
+    }
 }

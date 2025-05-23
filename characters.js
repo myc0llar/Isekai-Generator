@@ -1,9 +1,14 @@
 // Add characters to the fandoms
 new Character("Sonic", "Blue hedgehog with red shoes", "Speedy hero", "Hedgehog", fandoms.sonic, "male");
 new Character('Miles "Tails" Prower', "Orange fox with two tails", "Flying fox", "Fox", fandoms.sonic, "male");
+new Character('Amy Rose', "Pink hedgehog with a red dress", "Passionate heroine", "Hedgehog", fandoms.sonic, "female");
+new Character('Rouge the Bat', "White bat with a black suit", "World-class jewel thief", "Bat", fandoms.sonic, "female");
+new Character('Shadow the Hedgehog', "Black hedgehog with red stripes", "Ultimate Lifeform", "Hedgehog", fandoms.sonic, "male");
+
 
 new Character("Link", "Blonde-haired hylian with green tunic", "Courageous adventurer from Hyrule", "Hylian", fandoms.zelda, "male");
 new Character("Zelda", "Blonde-haired hylian princess with elaborate dresses and jewelry", "Wise Princess of Hyrule", "Hylian", fandoms.zelda, "female");
+new Character("Ganondorf", "Red-haired Gerudo with demonic armour", "Demon King of the Gerudo", "Gerudo", fandoms.zelda, "male");
 
 new Character("2D", "Tall, lanky human with blue hair", "Vocalist of the virtual band Gorillaz", "Human", fandoms.gorillaz, "male");
 new Character("Murdoc", "Green human with black hair", "Bassist of the virtual band Gorillaz", "Human (citation needed)", fandoms.gorillaz, "male");
@@ -14,7 +19,7 @@ new Character("Mario", "Red plumber with a famous mustache", "A plumber who is a
 new Character("Luigi", "Green plumber with a mustache", "Mario's younger brother who often accompanies him on adventures.", "Human", fandoms.mario, "male");
 new Character("Princess Peach", "Blonde princess with a pink dress", "The ruler of the Mushroom Kingdom who is frequently kidnapped by Bowser.", "Human", fandoms.mario, "female");
 new Character("Bowser", "Large, turtle-like creature with spikes", "The main antagonist of the Mario series, who constantly tries to kidnap Princess Peach and take over the Mushroom Kingdom.", "Koopa", fandoms.mario, "male");
-new Character("Yoshi", "Small, dinosaur-like creature", "A friendly, egg-laying dinosaur who often aids Mario and Luigi on their adventures.", "Yoshi", fandoms.mario, "male");
+new Character("Yoshi", "Small, dinosaur-like creature", "A friendly, egg-laying dinosaur who often aids Mario and Luigi on their adventures.", "Dinosaur", fandoms.mario, "male");
 
 // Pokémon Characters
 new Character("Pikachu", "Small, yellow mouse-like creature", "The iconic Pokémon companion and partner of Ash Ketchum.", "Pokémon", fandoms.pokemon, "male");

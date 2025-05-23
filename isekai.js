@@ -1,9 +1,20 @@
+/**
+ * Represents a fandom.
+ */
 class Fandom {
+  /**
+   * Fandom object.
+   * @param {String} name Name of the media.
+   * @param {String} alias HTML ID for the media.
+   * @param {String} genre What kind of media the fandom is (horror, action, etc)
+   * @param {String} medium How the media is portrayed.
+   * @param {String} [company = null] What company (if any) owns the media.
+   */
   constructor(name, alias, genre, medium, company = null) {
     this.name = name;
     this.alias= alias;
     this.genre = genre; // This can be vague.
-    // Define the accepted mediums
+    // Accepted mediums
     const acceptedMediums = ['Television', 'Video Games', 'Movies', 'Cartoons', 'Comics', 'Anime', 'Manga', 'Books', 'Music']; // <-- We can add more of these later.
 
     for (const item of medium) {
@@ -16,7 +27,7 @@ class Fandom {
     this.company = company; // Null by default. Not all characters will have a company behind them.
     this.characters = []; // Array to store characters belonging to this fandom
 
-    console.log(`${"-".repeat(10)}> ${this.name} loaded.`)
+    // console.log(`${"-".repeat(10)}> ${this.name} loaded.`)
   }
 
   addCharacter(character) {
@@ -28,7 +39,19 @@ class Fandom {
   }
 }
 
+/**
+ * A Fandom character
+ */
 class Character {
+  /**
+   * 
+   * @param {String} name The character's name.
+   * @param {String} appearance A brief description of the character's appearance.
+   * @param {String} backstory A brief description of what the character does, what the character is known as, or what the character is known for.
+   * @param {String} species The species of the character
+   * @param {Object} fandom The fandom object the character belongs to.
+   * @param {String} gender The character's gender.
+   */
   constructor(name, appearance, backstory, species, fandom, gender) {
     this.name = name;
     this.appearance = appearance;
@@ -37,24 +60,11 @@ class Character {
     this.fandom = fandom;
     this.gender = gender;
     this.fandom.addCharacter(this); // Add the character to the fandom's character array
-
-    console.log(`${this.name} successfully added to ${this.fandom.name}!`);
-  }
-
-  // Methods to generate character-specific content
-  describeAppearance() {
-    // Logic to generate a description of the character's appearance
-    return `${this.appearance}`;
-  }
-
-  describeBackstory() {
-    // Logic to generate a description of the character's backstory
-    return `${this.backstory}`;
   }
 
   describeOrigin() {
     // Generate a description of the character's origin based on the Fandom
-    return `${this.name} is a ${this.species} from the ${this.fandom.name} fandom, a ${this.fandom.genre} ${this.fandom.medium}${this.fandom.company ? "created by " + this.fandom.company : ""}.`;
+    return `${this.name} is a ${this.species} from the ${this.fandom.name} fandom, a ${this.fandom.genre} ${this.fandom.medium}${this.fandom.company ? " created by " + this.fandom.company : ""}.`;
   }
 }
 
@@ -90,10 +100,8 @@ function makeScenario(){
   const fandomKeys = Object.keys(fandoms);
   const data = [...document.querySelectorAll('.inp:checked')].map(e => e.id); // The fandoms they selected
 
-  // TODO: Filter the fandomKeys and include only fandoms that are in the data array above.
   const filteredFandomKeys = fandomKeys.filter(key => data.includes(fandoms[key].alias));
 
-  // If no fandoms are selected, return early or handle the case as needed
   if (filteredFandomKeys.length === 0) {
     alert("Please select at least one fandom.");
     return;
@@ -103,13 +111,27 @@ function makeScenario(){
   const randomFandom = fandoms[filteredFandomKeys[randomIndex]];
 
   document.querySelector("#fandomsection").style.display = "block";
-  setElement("chosenFandom", randomFandom.name);
 
-  const fandomChars = randomFandom.getCharacters();
-  const charNames = fandomChars.map((x) => x.name);
+  const genders = Array.from(document.querySelectorAll('[data-category="gender"]:checked')).map(gender => gender.id);
 
-  setElement("charRoster", listify(charNames));
-  setElement("charcount", fandomChars.length);
+  const fandomChars = randomFandom.getCharacters()
+  .filter((char) => {
+    return genders.includes(char.gender);
+  })
 
-  console.log(randomise(fandomChars));
+  const chosenChar = randomise(fandomChars);
+  let scenarioList = [];
+  if (chosenChar.fandom.company !== null){
+    scenarioList = [...scenarios]
+  } else {
+    // Fandom company is null. Filter all shouldHaveCompany scenarios.
+    scenarioList = scenarios.filter((scen) => {
+      return scen.shouldHaveCompany == false;
+    });
+  }
+  const chosenScenario = randomise(scenarioList);
+
+  setElement('scen-title', chosenScenario.title);
+  setElement('scen-fandom', `Fandom: ${chosenChar.fandom.name}`);
+  setElement('scen-stage', chosenScenario.renderScenario(chosenChar), true);
 }

@@ -39,6 +39,7 @@ class Scenario {
 const scenarios= [
     // Company-centric; Requires a company of the fandom to be named.
     new Scenario("New Job", "You are being hired to work at COMP, and on your final interview, you are asked to sign some papers. The moment you do, you ADVERB turn into CHAR.", true, true),
+    new Scenario("Convention", "<p>The local anime convention has been interesting. There's a booth with an instant cosplay machine! They're only charging a little money to use it. As you pay and step through it, you instantly get turned into CHAR.</p><p>You spend the day in cosplay, assuming that you'll turn back. Hours pass, you return to where the booth was, and find that they're gone. Turns out, they were removed from the convention following a malfunction, which made all transformations irreversible.</p><p>The staff doesn't have much consolation, but they could see if COMP is in the market for a \"living mascot\"...</p>", true, true),
 
     // Not company-centric, can be generic.
     new Scenario("Truck-kun", "You were just minding your own business, when you got hit by a truck! Now you're in the world of FANDOMHERE... as CHAR?!", false, true),
